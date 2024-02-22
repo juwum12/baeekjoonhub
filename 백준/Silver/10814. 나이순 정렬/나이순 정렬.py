@@ -1,11 +1,20 @@
-import sys, heapq
-N = int(input())
-heap =[]
-for i in range(N):
-    age , name = sys.stdin.readline().split()
-    pair = (int(age), i, name)
-    heapq.heappush(heap, pair)
+import sys
 
-while heap:
-    age, _, name = heapq.heappop(heap)
-    print(age, name)
+
+class Solution:
+    def sort_age(self, ls: list[list]):
+        ls.sort(key=lambda x: int(x[0]))
+        for person in ls :
+            print(*person[:2])
+
+
+n = int(input())
+
+ls = []
+for i in range(n):
+    split = sys.stdin.readline().strip().split(" ")
+    split.append(i)
+    ls.append(split)
+
+sol = Solution()
+sol.sort_age(ls)
